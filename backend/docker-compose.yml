@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+    pocketbase:
+        build:
+            context: .
+            args:
+                VERSION: "0.12.2"
+            # dockerfile: Dockerfile-alternate
+        environment:
+            - 'BYPASS_LITESTREAM=${BYPASS_LITESTREAM}'
+            - 'R2_BUCKET=${R2_BUCKET}'
+            - 'R2_ACCESS_KEY=${R2_ACCESS_KEY}'
+            - 'R2_SECRET_KEY=${R2_SECRET_KEY}'
+            - 'R2_DATA_PATH=${R2_DATA_PATH}'
+            - 'R2_LOGS_PATH=${R2_LOGS_PATH}'
+            - 'R2_URL=${R2_URL}'
+        # image: 'pocketbase:latest'
+        ports:
+            - '8090:8090'
+        volumes:
+            - ./pocketbase/seed_migrations:/app/seed_migrations
