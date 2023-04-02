@@ -4,7 +4,7 @@ services:
         build:
             context: .
             args:
-                VERSION: "0.12.2"
+                VERSION: "0.13.0"
             # dockerfile: Dockerfile-alternate
         environment:
             - 'BYPASS_LITESTREAM=${BYPASS_LITESTREAM}'
@@ -19,3 +19,6 @@ services:
             - '8090:8090'
         volumes:
             - ./pocketbase/seed_migrations:/app/seed_migrations
+            - ./pocketbase/prod_migrations:/app/pb_migrations
+            - ./pocketbase/pb_data:/app/pb_data
+

@@ -1,0 +1,210 @@
+[
+    {
+        "id": "_pb_users_auth_",
+        "name": "users",
+        "type": "auth",
+        "system": false,
+        "schema": [
+            {
+                "id": "users_name",
+                "name": "name",
+                "type": "text",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "users_avatar",
+                "name": "avatar",
+                "type": "file",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "maxSize": 5242880,
+                    "mimeTypes": [
+                        "image/jpeg",
+                        "image/png",
+                        "image/svg+xml",
+                        "image/gif",
+                        "image/webp"
+                    ],
+                    "thumbs": null
+                }
+            }
+        ],
+        "listRule": "id = @request.auth.id",
+        "viewRule": "id = @request.auth.id",
+        "createRule": "",
+        "updateRule": "id = @request.auth.id",
+        "deleteRule": "id = @request.auth.id",
+        "options": {
+            "allowEmailAuth": true,
+            "allowOAuth2Auth": true,
+            "allowUsernameAuth": true,
+            "exceptEmailDomains": null,
+            "manageRule": null,
+            "minPasswordLength": 8,
+            "onlyEmailDomains": null,
+            "requireEmail": false
+        }
+    },
+    {
+        "id": "pqqbdcjkauhb0nv",
+        "name": "test_collection",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "id": "hmvs5nz6",
+                "name": "name",
+                "type": "text",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": null,
+        "viewRule": null,
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    },
+    {
+        "id": "alywxiuhp1taxh4",
+        "name": "invoices",
+        "system": false,
+        "listRule": "owner = @request.auth.id",
+        "viewRule": "owner = @request.auth.id",
+        "createRule": "owner = @request.auth.id",
+        "updateRule": "owner = @request.auth.id",
+        "deleteRule": "owner = @request.auth.id",
+        "schema": [
+            {
+                "id": "mfm6xjjm",
+                "name": "customerName",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "cyiinttw",
+                "name": "customerEmail",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "wyuurvgv",
+                "name": "owner",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "_pb_users_auth_"
+                }
+            }
+        ]
+    },
+    {
+        "id": "5ycvzx9efr14xa7",
+        "name": "items",
+        "system": false,
+        "listRule": "invoice.owner = @request.auth.id",
+        "viewRule": "invoice.owner = @request.auth.id",
+        "createRule": "invoice.owner = @request.auth.id",
+        "updateRule": "invoice.owner = @request.auth.id",
+        "deleteRule": "invoice.owner = @request.auth.id",
+        "schema": [
+            {
+                "id": "2a6a6dar",
+                "name": "name",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "7kys8pdq",
+                "name": "description",
+                "type": "text",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "vqmsel58",
+                "name": "priceInUSDC",
+                "type": "number",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null
+                }
+            },
+            {
+                "id": "blse6pqa",
+                "name": "dueDate",
+                "type": "date",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": "",
+                    "max": ""
+                }
+            },
+            {
+                "id": "os3zq8mz",
+                "name": "invoice",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "alywxiuhp1taxh4",
+                    "cascadeDelete": true
+                }
+            }
+        ]
+    }
+]

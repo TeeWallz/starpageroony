@@ -1,46 +1,28 @@
-# pocketbase-vue
+# PBStarter (com.aaronblondeau.parallax-sample)
 
-This template should help get you started developing with Vue 3 in Vite.
+PocketBase Starter Project
 
-## Recommended IDE Setup
+This is a demo/starter for using Pocketbase with Quasar for rapid application development.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# Backend - Pocketbase
 
-## Type Support for `.vue` Imports in TS
+Begin by downloading pocketbase, extracting the executable and running it locally. I recommend doing this in the "pocketbase" folder included in this project. Full instructions can be found here : [https://pocketbase.io/docs/](https://pocketbase.io/docs/).
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```
+./pocketbase.exe serve
 ```
 
-### Compile and Hot-Reload for Development
+Once Pocketbase is running, go to http://127.0.0.1:8090/_/ and create an admin account.
 
-```sh
-npm run dev
-```
+Then, go to Settings > Import collections, and import ./pocketbase/collections.json
 
-### Type-Check, Compile and Minify for Production
+While in settings make sure to configure the application name and configure SMTP settings (with Mailtrap). 
 
-```sh
-npm run build
-```
+## Frontend - Quasar
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+```bash
+# install dependencies
+yarn
+# run
+yarn dev
 ```
