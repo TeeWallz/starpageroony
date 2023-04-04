@@ -7,14 +7,26 @@
             v-model:pagination="pagination"
             row-key="id"
             height="100%"
-            >
+        >
+          <template v-slot:body="props">
+            <q-tr :props="props">
+              <q-td key="actions" :props="props">
+                <!-- <DeleteInvoiceButton :invoice="props.row" @on-delete-invoice="fetchInvoices" /> -->
+                <q-btn icon="list" size="sm" color="primary" @click="loadLinksJson(props.row.data)"></q-btn>
+              </q-td>
+            </q-tr>
+          </template>
         </q-table>
     </div>
 </template>
+
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useLinksStore } from 'src/stores/links'
 import notifyError from 'src/lib/notifyError'
+
+const componentProps = defineProps(['state', 'setJsonInEditor'])
+console.log({ componentProps })
 
 const linksStore = useLinksStore()
 const loadingLinks = ref(false)
@@ -43,6 +55,11 @@ const columns = [
     label: 'Actions'
   }
 ]
+
+function loadLinksJson (event) {
+  console.log(event)
+  componentProps.setJsonInEditor(event)
+}
 
 async function fetchLinks () {
   loadingLinks.value = true

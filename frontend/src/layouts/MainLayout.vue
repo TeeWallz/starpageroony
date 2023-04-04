@@ -10,6 +10,7 @@
 
         <q-btn stretch flat label="Login" :to="{name: 'login'}" v-if="!auth.authenticated" />
         <q-btn stretch flat label="Profile" v-if="auth.authenticated" :to="{name: 'profile'}" />
+        <q-btn stretch flat label="Links" v-if="auth.authenticated" :to="{name: 'links'}" />
         <q-btn stretch flat label="Logout" v-if="auth.authenticated" @click="performLogout" />
       </q-toolbar>
     </q-header>
